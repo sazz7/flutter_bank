@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bank/cards.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,6 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _controller = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,27 +37,26 @@ class _HomePageState extends State<HomePage> {
           //cards
           SizedBox(height: 25,),
           Container(
-            width: 300,
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.deepPurple[300],
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child:
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            height: 200,
+            child: PageView(
+              scrollDirection: Axis.horizontal,
+              controller: _controller,
               children: [
-              Text("Blance",style: TextStyle(color: Colors.white),),
-              SizedBox(height: 10,),
-              Text("65,000",style: TextStyle(color: Colors.white,fontSize: 24),),
-                SizedBox(height: 30,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                Text("*****65442",style: TextStyle(color: Colors.white),),
-                Text("10/32",style: TextStyle(color: Colors.white),),
-              ],)
-            ],),)
+                MyCard(balance: 6500.00, cardNumber: 6512, expiryMonth: 10, expiryYear: 2032, color: Colors.deepPurple[300]),
+                MyCard(balance: 5400.00, cardNumber: 7500, expiryMonth: 07, expiryYear: 2028, color: Colors.blue[300]),
+                MyCard(balance: 9200.32, cardNumber: 5423, expiryMonth: 05, expiryYear: 2030, color: Colors.green[300]),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          SmoothPageIndicator(
+              controller: _controller,
+              count: 3,
+            effect: ExpandingDotsEffect(
+              activeDotColor: Colors.grey.shade800
+            ),
+          )
+
         ],),
       ),
     );
