@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bank/cards.dart';
+import 'package:flutter_bank/my_button.dart';
+import 'package:flutter_bank/my_list.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +14,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[200],
+      floatingActionButton: SizedBox(height: 70,width: 70,
+        child: FloatingActionButton(
+          onPressed: (){},
+          backgroundColor: Colors.pinkAccent,
+          child: Icon(Icons.monetization_on),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+          IconButton(
+            iconSize: 35,
+              onPressed: (){},
+              icon: Icon(Icons.home)),
+          IconButton(
+              iconSize: 35,
+              onPressed: (){},
+              icon: Icon(Icons.settings))
+        ],),
+      ),
       body: SafeArea(
         child: Column(children: [
           Padding(
@@ -55,8 +78,21 @@ class _HomePageState extends State<HomePage> {
             effect: ExpandingDotsEffect(
               activeDotColor: Colors.grey.shade800
             ),
-          )
+          ),
+          SizedBox(height: 20),
 
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                MyButton(image: "assets/send.png", text: "Send",button_tap: (){},),
+                MyButton(image: "assets/request.png", text: "Request",button_tap: (){}),
+                MyButton(image: "assets/bill.png", text: "Bill",button_tap: (){}),
+            ],),
+          ),
+          SizedBox(height: 30,),
+          MyList(),
         ],),
       ),
     );
