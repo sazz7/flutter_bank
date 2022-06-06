@@ -38,9 +38,7 @@ class MyList extends StatelessWidget {
                     SizedBox(height: 10,),
                     Text("Transaction history",style: TextStyle(fontSize: 15),)
                   ],),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: Icon(Icons.arrow_forward_ios)),
+                Icon(Icons.arrow_forward_ios),
               ],),
           ),),
       ),

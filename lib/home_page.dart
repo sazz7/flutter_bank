@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bank/cards.dart';
 import 'package:flutter_bank/my_button.dart';
 import 'package:flutter_bank/my_list.dart';
+import 'package:flutter_bank/send.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatefulWidget {
@@ -86,7 +87,9 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MyButton(image: "assets/send.png", text: "Send",button_tap: (){},),
+                MyButton(image: "assets/send.png", text: "Send",button_tap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Send()));
+                },),
                 MyButton(image: "assets/request.png", text: "Request",button_tap: (){}),
                 MyButton(image: "assets/bill.png", text: "Bill",button_tap: (){}),
             ],),
